@@ -7,5 +7,13 @@ export default async function ProfilePage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  return <ProfileView userEmail={user?.email ?? ''} />;
+  // Check if user signed up with email/password (has password identity)
+  const hasPassword = user?.app_metadata?.providers?.includes('email') ?? false;
+
+  return (
+    <ProfileView
+      userEmail={user?.email ?? ''}
+      hasPassword={hasPassword}
+    />
+  );
 }
