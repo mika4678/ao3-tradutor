@@ -12,7 +12,7 @@ def find_epub():
 
 def translate_html_content(html_content, target_lang='pt'):
     soup = BeautifulSoup(html_content, 'html.parser')
-    translator = GoogleTranslator(source='auto', target=target_lang)
+    translator = GoogleTranslator(source='auto', target=pt_BR)
 
     # Traduz o texto dentro das tags sem alterar as tags HTML
     for element in soup.find_all(['p', 'h1', 'h2', 'h3', 'h4', 'span', 'li']):
